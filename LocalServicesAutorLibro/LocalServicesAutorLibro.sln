@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalServicesAutorLibro", "LocalServicesAutorLibro.csproj", "{528C41F6-A621-449C-B2AA-20DD168935D3}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ServiciosDistriBiblio2", "http://localhost:15991", "{AEEF76F4-4CBF-49B5-8667-CB6AD3A44A6F}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{528c41f6-a621-449c-b2aa-20dd168935d3}|LocalServicesAutorLibro.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_15991"
+		Debug.AspNetCompiler.PhysicalPath = "..\ServiciosDistriBiblio2\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15991\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_15991"
+		Release.AspNetCompiler.PhysicalPath = "..\ServiciosDistriBiblio2\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15991\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\ServiciosDistriBiblio2\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSiteAutorLibro", "http://localhost:13341", "{3F7E65FB-89A3-4B8B-A789-EE4F0166F7BC}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_13341"
+		Debug.AspNetCompiler.PhysicalPath = "..\WebSiteAutorLibro\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_13341\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_13341"
+		Release.AspNetCompiler.PhysicalPath = "..\WebSiteAutorLibro\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_13341\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\WebSiteAutorLibro\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{528C41F6-A621-449C-B2AA-20DD168935D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528C41F6-A621-449C-B2AA-20DD168935D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528C41F6-A621-449C-B2AA-20DD168935D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528C41F6-A621-449C-B2AA-20DD168935D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEEF76F4-4CBF-49B5-8667-CB6AD3A44A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEEF76F4-4CBF-49B5-8667-CB6AD3A44A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEEF76F4-4CBF-49B5-8667-CB6AD3A44A6F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEEF76F4-4CBF-49B5-8667-CB6AD3A44A6F}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3F7E65FB-89A3-4B8B-A789-EE4F0166F7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F7E65FB-89A3-4B8B-A789-EE4F0166F7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F7E65FB-89A3-4B8B-A789-EE4F0166F7BC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F7E65FB-89A3-4B8B-A789-EE4F0166F7BC}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

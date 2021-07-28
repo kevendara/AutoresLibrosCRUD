@@ -1,0 +1,7 @@
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\bin\Debug\LocalServicesAutorLibro.dll.config
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\bin\Debug\LocalServicesAutorLibro.dll
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\bin\Debug\LocalServicesAutorLibro.pdb
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\bin\Debug\EntityFramework.dll
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\bin\Debug\EntityFramework.xml
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\obj\Debug\LocalServicesAutorLibro.dll
+D:\Endara Kevin - Proyecto Progra 6\LocalServicesAutorLibro\obj\Debug\LocalServicesAutorLibro.pdb

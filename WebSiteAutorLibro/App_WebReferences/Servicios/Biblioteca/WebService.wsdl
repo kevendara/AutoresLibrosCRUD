@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="lista_autores">
+        <s:complexType />
+      </s:element>
+      <s:element name="lista_autoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista_autoresResult" type="tns:ArrayOfAutores2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAutores2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Autores2" nillable="true" type="tns:Autores2" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Autores2">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_autores" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="autor_uno_nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="autor_dos_nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="autor_tres_nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insertar_autores_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="autor_uno_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="autor_dos_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="autor_tres_nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertar_autores_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertar_autores_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_autores_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_autores" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="autor_uno_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="autor_dos_nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="autor_tres_nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_autores_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizar_autores_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_autores_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_autores" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_autores_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="delete_autores_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="lista_libros">
+        <s:complexType />
+      </s:element>
+      <s:element name="lista_librosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lista_librosResult" type="tns:ArrayOfLibros2" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLibros2">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Libros2" nillable="true" type="tns:Libros2" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Libros2">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_libro" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="id_autores" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="editorial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fecha_publicacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idioma" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="numero_paginas" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insertar_libros_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="titulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_autores" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="editorial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha_publicacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idioma" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="numero_paginas" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertar_libros_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertar_libros_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_libros_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_libro" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="titulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_autores" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="editorial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fecha_publicacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idioma" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="numero_paginas" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_libros_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actualizar_libros_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_libro_sp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id_libro" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_libro_spResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="delete_libro_spResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="lista_autoresSoapIn">
+    <wsdl:part name="parameters" element="tns:lista_autores" />
+  </wsdl:message>
+  <wsdl:message name="lista_autoresSoapOut">
+    <wsdl:part name="parameters" element="tns:lista_autoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertar_autores_spSoapIn">
+    <wsdl:part name="parameters" element="tns:insertar_autores_sp" />
+  </wsdl:message>
+  <wsdl:message name="insertar_autores_spSoapOut">
+    <wsdl:part name="parameters" element="tns:insertar_autores_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_autores_spSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizar_autores_sp" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_autores_spSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizar_autores_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="delete_autores_spSoapIn">
+    <wsdl:part name="parameters" element="tns:delete_autores_sp" />
+  </wsdl:message>
+  <wsdl:message name="delete_autores_spSoapOut">
+    <wsdl:part name="parameters" element="tns:delete_autores_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="lista_librosSoapIn">
+    <wsdl:part name="parameters" element="tns:lista_libros" />
+  </wsdl:message>
+  <wsdl:message name="lista_librosSoapOut">
+    <wsdl:part name="parameters" element="tns:lista_librosResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertar_libros_spSoapIn">
+    <wsdl:part name="parameters" element="tns:insertar_libros_sp" />
+  </wsdl:message>
+  <wsdl:message name="insertar_libros_spSoapOut">
+    <wsdl:part name="parameters" element="tns:insertar_libros_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_libros_spSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizar_libros_sp" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_libros_spSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizar_libros_spResponse" />
+  </wsdl:message>
+  <wsdl:message name="delete_libro_spSoapIn">
+    <wsdl:part name="parameters" element="tns:delete_libro_sp" />
+  </wsdl:message>
+  <wsdl:message name="delete_libro_spSoapOut">
+    <wsdl:part name="parameters" element="tns:delete_libro_spResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="lista_autores">
+      <wsdl:input message="tns:lista_autoresSoapIn" />
+      <wsdl:output message="tns:lista_autoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertar_autores_sp">
+      <wsdl:input message="tns:insertar_autores_spSoapIn" />
+      <wsdl:output message="tns:insertar_autores_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_autores_sp">
+      <wsdl:input message="tns:actualizar_autores_spSoapIn" />
+      <wsdl:output message="tns:actualizar_autores_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_autores_sp">
+      <wsdl:input message="tns:delete_autores_spSoapIn" />
+      <wsdl:output message="tns:delete_autores_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="lista_libros">
+      <wsdl:input message="tns:lista_librosSoapIn" />
+      <wsdl:output message="tns:lista_librosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertar_libros_sp">
+      <wsdl:input message="tns:insertar_libros_spSoapIn" />
+      <wsdl:output message="tns:insertar_libros_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_libros_sp">
+      <wsdl:input message="tns:actualizar_libros_spSoapIn" />
+      <wsdl:output message="tns:actualizar_libros_spSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_libro_sp">
+      <wsdl:input message="tns:delete_libro_spSoapIn" />
+      <wsdl:output message="tns:delete_libro_spSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_autores">
+      <soap:operation soapAction="http://tempuri.org/lista_autores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_autores_sp">
+      <soap:operation soapAction="http://tempuri.org/insertar_autores_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_autores_sp">
+      <soap:operation soapAction="http://tempuri.org/actualizar_autores_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_autores_sp">
+      <soap:operation soapAction="http://tempuri.org/delete_autores_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_libros">
+      <soap:operation soapAction="http://tempuri.org/lista_libros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_libros_sp">
+      <soap:operation soapAction="http://tempuri.org/insertar_libros_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_libros_sp">
+      <soap:operation soapAction="http://tempuri.org/actualizar_libros_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_libro_sp">
+      <soap:operation soapAction="http://tempuri.org/delete_libro_sp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_autores">
+      <soap12:operation soapAction="http://tempuri.org/lista_autores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_autores_sp">
+      <soap12:operation soapAction="http://tempuri.org/insertar_autores_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_autores_sp">
+      <soap12:operation soapAction="http://tempuri.org/actualizar_autores_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_autores_sp">
+      <soap12:operation soapAction="http://tempuri.org/delete_autores_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lista_libros">
+      <soap12:operation soapAction="http://tempuri.org/lista_libros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertar_libros_sp">
+      <soap12:operation soapAction="http://tempuri.org/insertar_libros_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_libros_sp">
+      <soap12:operation soapAction="http://tempuri.org/actualizar_libros_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_libro_sp">
+      <soap12:operation soapAction="http://tempuri.org/delete_libro_sp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:15991/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:15991/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

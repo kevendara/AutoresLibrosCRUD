@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="autores_libros_Progra6ModelStoreContainer" CdmEntityContainer="CapaEntityFramework">
+    <EntitySetMapping Name="autores">
+      <EntityTypeMapping TypeName="autores_libros_Progra6Model.autores">
+        <MappingFragment StoreEntitySet="autores">
+          <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+          <ScalarProperty Name="autor_uno_nombre" ColumnName="autor_uno_nombre" />
+          <ScalarProperty Name="autor_dos_nombre" ColumnName="autor_dos_nombre" />
+          <ScalarProperty Name="autor_tres_nombre" ColumnName="autor_tres_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="autores_libros_Progra6Model.autores">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="autores_libros_Progra6Model.Store.create_autor">
+            <ScalarProperty Name="autor_tres_nombre" ParameterName="autor_tres_nombre" />
+            <ScalarProperty Name="autor_dos_nombre" ParameterName="autor_dos_nombre" />
+            <ScalarProperty Name="autor_uno_nombre" ParameterName="autor_uno_nombre" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="autores_libros_Progra6Model.Store.update_autores">
+            <ScalarProperty Name="autor_tres_nombre" ParameterName="autor_tres_nombre" Version="Current" />
+            <ScalarProperty Name="autor_dos_nombre" ParameterName="autor_dos_nombre" Version="Current" />
+            <ScalarProperty Name="autor_uno_nombre" ParameterName="autor_uno_nombre" Version="Current" />
+            <ScalarProperty Name="id_autores" ParameterName="id_autores" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="autores_libros_Progra6Model.Store.delete_autor">
+            <ScalarProperty Name="id_autores" ParameterName="id_autores" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="libros">
+      <EntityTypeMapping TypeName="autores_libros_Progra6Model.libros">
+        <MappingFragment StoreEntitySet="libros">
+          <ScalarProperty Name="id_libro" ColumnName="id_libro" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+          <ScalarProperty Name="editorial" ColumnName="editorial" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="idioma" ColumnName="idioma" />
+          <ScalarProperty Name="numero_paginas" ColumnName="numero_paginas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="autores_libros_Progra6Model.libros">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="autores_libros_Progra6Model.Store.create_libro">
+            <ScalarProperty Name="numero_paginas" ParameterName="numero_paginas" />
+            <ScalarProperty Name="idioma" ParameterName="idioma" />
+            <ScalarProperty Name="fecha_publicacion" ParameterName="fecha_publicacion" />
+            <ScalarProperty Name="editorial" ParameterName="editorial" />
+            <ScalarProperty Name="id_autores" ParameterName="id_autores" />
+            <ScalarProperty Name="titulo" ParameterName="titulo" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="autores_libros_Progra6Model.Store.update_libro">
+            <ScalarProperty Name="numero_paginas" ParameterName="numero_paginas" Version="Current" />
+            <ScalarProperty Name="idioma" ParameterName="idioma" Version="Current" />
+            <ScalarProperty Name="fecha_publicacion" ParameterName="fecha_publicacion" Version="Current" />
+            <ScalarProperty Name="editorial" ParameterName="editorial" Version="Current" />
+            <ScalarProperty Name="id_autores" ParameterName="id_autores" Version="Current" />
+            <ScalarProperty Name="titulo" ParameterName="titulo" Version="Current" />
+            <ScalarProperty Name="id_libro" ParameterName="id_libro" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="autores_libros_Progra6Model.Store.delete_libro">
+            <ScalarProperty Name="id_libro" ParameterName="id_libro" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="create_autor" FunctionName="autores_libros_Progra6Model.Store.create_autor" />
+    <FunctionImportMapping FunctionImportName="create_libro" FunctionName="autores_libros_Progra6Model.Store.create_libro" />
+    <FunctionImportMapping FunctionImportName="delete_autor" FunctionName="autores_libros_Progra6Model.Store.delete_autor" />
+    <FunctionImportMapping FunctionImportName="delete_libro" FunctionName="autores_libros_Progra6Model.Store.delete_libro" />
+    <FunctionImportMapping FunctionImportName="select_autor" FunctionName="autores_libros_Progra6Model.Store.select_autor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_autor_Result">
+          <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+          <ScalarProperty Name="autor_uno_nombre" ColumnName="autor_uno_nombre" />
+          <ScalarProperty Name="autor_dos_nombre" ColumnName="autor_dos_nombre" />
+          <ScalarProperty Name="autor_tres_nombre" ColumnName="autor_tres_nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="select_autores" FunctionName="autores_libros_Progra6Model.Store.select_autores">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_autores_Result">
+          <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+          <ScalarProperty Name="autor_uno_nombre" ColumnName="autor_uno_nombre" />
+          <ScalarProperty Name="autor_dos_nombre" ColumnName="autor_dos_nombre" />
+          <ScalarProperty Name="autor_tres_nombre" ColumnName="autor_tres_nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="select_libro" FunctionName="autores_libros_Progra6Model.Store.select_libro">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_libro_Result">
+          <ScalarProperty Name="id_libro" ColumnName="id_libro" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+          <ScalarProperty Name="editorial" ColumnName="editorial" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="idioma" ColumnName="idioma" />
+          <ScalarProperty Name="numero_paginas" ColumnName="numero_paginas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="select_libros" FunctionName="autores_libros_Progra6Model.Store.select_libros">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_libros_Result">
+          <ScalarProperty Name="id_libro" ColumnName="id_libro" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+          <ScalarProperty Name="editorial" ColumnName="editorial" />
+          <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+          <ScalarProperty Name="idioma" ColumnName="idioma" />
+          <ScalarProperty Name="numero_paginas" ColumnName="numero_paginas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="update_autores" FunctionName="autores_libros_Progra6Model.Store.update_autores" />
+    <FunctionImportMapping FunctionImportName="update_libro" FunctionName="autores_libros_Progra6Model.Store.update_libro" />
+  </EntityContainerMapping>
+</Mapping>

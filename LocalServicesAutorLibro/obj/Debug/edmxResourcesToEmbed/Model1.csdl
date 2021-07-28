@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="autores_libros_Progra6Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CapaEntityFramework" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="autores" EntityType="autores_libros_Progra6Model.autores" />
+    <EntitySet Name="libros" EntityType="autores_libros_Progra6Model.libros" />
+    <AssociationSet Name="fk_libros_publica_autores" Association="autores_libros_Progra6Model.fk_libros_publica_autores">
+      <End Role="autores" EntitySet="autores" />
+      <End Role="libros" EntitySet="libros" />
+    </AssociationSet>
+    <FunctionImport Name="create_autor">
+      <Parameter Name="autor_uno_nombre" Mode="In" Type="String" />
+      <Parameter Name="autor_dos_nombre" Mode="In" Type="String" />
+      <Parameter Name="autor_tres_nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="create_libro">
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="id_autores" Mode="In" Type="Int32" />
+      <Parameter Name="editorial" Mode="In" Type="String" />
+      <Parameter Name="fecha_publicacion" Mode="In" Type="String" />
+      <Parameter Name="idioma" Mode="In" Type="String" />
+      <Parameter Name="numero_paginas" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_autor">
+      <Parameter Name="id_autores" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="delete_libro">
+      <Parameter Name="id_libro" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="select_autor" ReturnType="Collection(autores_libros_Progra6Model.select_autor_Result)">
+      <Parameter Name="id_autor" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="select_autores" ReturnType="Collection(autores_libros_Progra6Model.select_autores_Result)" />
+    <FunctionImport Name="select_libro" ReturnType="Collection(autores_libros_Progra6Model.select_libro_Result)">
+      <Parameter Name="id_libro" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="select_libros" ReturnType="Collection(autores_libros_Progra6Model.select_libros_Result)" />
+    <FunctionImport Name="update_autores">
+      <Parameter Name="id_autores" Mode="In" Type="Int32" />
+      <Parameter Name="autor_uno_nombre" Mode="In" Type="String" />
+      <Parameter Name="autor_dos_nombre" Mode="In" Type="String" />
+      <Parameter Name="autor_tres_nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="update_libro">
+      <Parameter Name="id_libro" Mode="In" Type="Int32" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="id_autores" Mode="In" Type="Int32" />
+      <Parameter Name="editorial" Mode="In" Type="String" />
+      <Parameter Name="fecha_publicacion" Mode="In" Type="String" />
+      <Parameter Name="idioma" Mode="In" Type="String" />
+      <Parameter Name="numero_paginas" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="autores">
+    <Key>
+      <PropertyRef Name="id_autores" />
+    </Key>
+    <Property Name="id_autores" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="autor_uno_nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="autor_dos_nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="autor_tres_nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="libros" Relationship="autores_libros_Progra6Model.fk_libros_publica_autores" FromRole="autores" ToRole="libros" />
+  </EntityType>
+  <EntityType Name="libros">
+    <Key>
+      <PropertyRef Name="id_libro" />
+    </Key>
+    <Property Name="id_libro" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="id_autores" Type="Int32" Nullable="false" />
+    <Property Name="editorial" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="fecha_publicacion" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="idioma" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="numero_paginas" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="autores" Relationship="autores_libros_Progra6Model.fk_libros_publica_autores" FromRole="libros" ToRole="autores" />
+  </EntityType>
+  <Association Name="fk_libros_publica_autores">
+    <End Role="autores" Type="autores_libros_Progra6Model.autores" Multiplicity="1" />
+    <End Role="libros" Type="autores_libros_Progra6Model.libros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autores">
+        <PropertyRef Name="id_autores" />
+      </Principal>
+      <Dependent Role="libros">
+        <PropertyRef Name="id_autores" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="select_autor_Result">
+    <Property Type="Int32" Name="id_autores" Nullable="false" />
+    <Property Type="String" Name="autor_uno_nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="autor_dos_nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="autor_tres_nombre" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="select_autores_Result">
+    <Property Type="Int32" Name="id_autores" Nullable="false" />
+    <Property Type="String" Name="autor_uno_nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="autor_dos_nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="autor_tres_nombre" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="select_libro_Result">
+    <Property Type="Int32" Name="id_libro" Nullable="false" />
+    <Property Type="String" Name="titulo" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="id_autores" Nullable="false" />
+    <Property Type="String" Name="editorial" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="fecha_publicacion" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="idioma" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="numero_paginas" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="select_libros_Result">
+    <Property Type="Int32" Name="id_libro" Nullable="false" />
+    <Property Type="String" Name="titulo" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="id_autores" Nullable="false" />
+    <Property Type="String" Name="editorial" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="fecha_publicacion" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="idioma" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="numero_paginas" Nullable="false" />
+  </ComplexType>
+</Schema>

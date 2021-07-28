@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="autores_libros_Progra6Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="autores_libros_Progra6ModelStoreContainer">
+          <EntitySet Name="autores" EntityType="autores_libros_Progra6Model.Store.autores" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="libros" EntityType="autores_libros_Progra6Model.Store.libros" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_libros_publica_autores" Association="autores_libros_Progra6Model.Store.fk_libros_publica_autores">
+            <End Role="autores" EntitySet="autores" />
+            <End Role="libros" EntitySet="libros" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="autores">
+          <Key>
+            <PropertyRef Name="id_autores" />
+          </Key>
+          <Property Name="id_autores" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="autor_uno_nombre" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="autor_dos_nombre" Type="varchar" MaxLength="50" />
+          <Property Name="autor_tres_nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="libros">
+          <Key>
+            <PropertyRef Name="id_libro" />
+          </Key>
+          <Property Name="id_libro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="id_autores" Type="int" Nullable="false" />
+          <Property Name="editorial" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="fecha_publicacion" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="idioma" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="numero_paginas" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_libros_publica_autores">
+          <End Role="autores" Type="autores_libros_Progra6Model.Store.autores" Multiplicity="1" />
+          <End Role="libros" Type="autores_libros_Progra6Model.Store.libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autores">
+              <PropertyRef Name="id_autores" />
+            </Principal>
+            <Dependent Role="libros">
+              <PropertyRef Name="id_autores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="create_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="autor_uno_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="autor_dos_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="autor_tres_nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="create_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="id_autores" Type="int" Mode="In" />
+          <Parameter Name="editorial" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_publicacion" Type="varchar" Mode="In" />
+          <Parameter Name="idioma" Type="varchar" Mode="In" />
+          <Parameter Name="numero_paginas" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delete_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_autores" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delete_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_libro" Type="int" Mode="In" />
+        </Function>
+        <Function Name="select_autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_autor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="select_autores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="select_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_libro" Type="int" Mode="In" />
+        </Function>
+        <Function Name="select_libros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="update_autores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_autores" Type="int" Mode="In" />
+          <Parameter Name="autor_uno_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="autor_dos_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="autor_tres_nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="update_libro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_libro" Type="int" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="id_autores" Type="int" Mode="In" />
+          <Parameter Name="editorial" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_publicacion" Type="varchar" Mode="In" />
+          <Parameter Name="idioma" Type="varchar" Mode="In" />
+          <Parameter Name="numero_paginas" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="autores_libros_Progra6Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CapaEntityFramework" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="autores" EntityType="autores_libros_Progra6Model.autores" />
+          <EntitySet Name="libros" EntityType="autores_libros_Progra6Model.libros" />
+          <AssociationSet Name="fk_libros_publica_autores" Association="autores_libros_Progra6Model.fk_libros_publica_autores">
+            <End Role="autores" EntitySet="autores" />
+            <End Role="libros" EntitySet="libros" />
+          </AssociationSet>
+          <FunctionImport Name="create_autor">
+            <Parameter Name="autor_uno_nombre" Mode="In" Type="String" />
+            <Parameter Name="autor_dos_nombre" Mode="In" Type="String" />
+            <Parameter Name="autor_tres_nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="create_libro">
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="id_autores" Mode="In" Type="Int32" />
+            <Parameter Name="editorial" Mode="In" Type="String" />
+            <Parameter Name="fecha_publicacion" Mode="In" Type="String" />
+            <Parameter Name="idioma" Mode="In" Type="String" />
+            <Parameter Name="numero_paginas" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delete_autor">
+          <Parameter Name="id_autores" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delete_libro">
+          <Parameter Name="id_libro" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="select_autor" ReturnType="Collection(autores_libros_Progra6Model.select_autor_Result)">
+          <Parameter Name="id_autor" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="select_autores" ReturnType="Collection(autores_libros_Progra6Model.select_autores_Result)" />
+          <FunctionImport Name="select_libro" ReturnType="Collection(autores_libros_Progra6Model.select_libro_Result)">
+          <Parameter Name="id_libro" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="select_libros" ReturnType="Collection(autores_libros_Progra6Model.select_libros_Result)" />
+          <FunctionImport Name="update_autores">
+            <Parameter Name="id_autores" Mode="In" Type="Int32" />
+            <Parameter Name="autor_uno_nombre" Mode="In" Type="String" />
+            <Parameter Name="autor_dos_nombre" Mode="In" Type="String" />
+            <Parameter Name="autor_tres_nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_libro">
+            <Parameter Name="id_libro" Mode="In" Type="Int32" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="id_autores" Mode="In" Type="Int32" />
+            <Parameter Name="editorial" Mode="In" Type="String" />
+            <Parameter Name="fecha_publicacion" Mode="In" Type="String" />
+            <Parameter Name="idioma" Mode="In" Type="String" />
+            <Parameter Name="numero_paginas" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="autores">
+          <Key>
+            <PropertyRef Name="id_autores" />
+          </Key>
+          <Property Name="id_autores" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="autor_uno_nombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="autor_dos_nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="autor_tres_nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="libros" Relationship="autores_libros_Progra6Model.fk_libros_publica_autores" FromRole="autores" ToRole="libros" />
+        </EntityType>
+        <EntityType Name="libros">
+          <Key>
+            <PropertyRef Name="id_libro" />
+          </Key>
+          <Property Name="id_libro" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="id_autores" Type="Int32" Nullable="false" />
+          <Property Name="editorial" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="fecha_publicacion" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="idioma" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="numero_paginas" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="autores" Relationship="autores_libros_Progra6Model.fk_libros_publica_autores" FromRole="libros" ToRole="autores" />
+        </EntityType>
+        <Association Name="fk_libros_publica_autores">
+          <End Role="autores" Type="autores_libros_Progra6Model.autores" Multiplicity="1" />
+          <End Role="libros" Type="autores_libros_Progra6Model.libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="autores">
+              <PropertyRef Name="id_autores" />
+            </Principal>
+            <Dependent Role="libros">
+              <PropertyRef Name="id_autores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="select_autor_Result">
+          <Property Type="Int32" Name="id_autores" Nullable="false" />
+          <Property Type="String" Name="autor_uno_nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="autor_dos_nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="autor_tres_nombre" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="select_autores_Result">
+          <Property Type="Int32" Name="id_autores" Nullable="false" />
+          <Property Type="String" Name="autor_uno_nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="autor_dos_nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="autor_tres_nombre" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="select_libro_Result">
+          <Property Type="Int32" Name="id_libro" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="id_autores" Nullable="false" />
+          <Property Type="String" Name="editorial" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="fecha_publicacion" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="idioma" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="numero_paginas" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="select_libros_Result">
+          <Property Type="Int32" Name="id_libro" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="id_autores" Nullable="false" />
+          <Property Type="String" Name="editorial" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="fecha_publicacion" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="idioma" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="numero_paginas" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="autores_libros_Progra6ModelStoreContainer" CdmEntityContainer="CapaEntityFramework">
+          <EntitySetMapping Name="autores">
+            <EntityTypeMapping TypeName="autores_libros_Progra6Model.autores">
+              <MappingFragment StoreEntitySet="autores">
+                <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+                <ScalarProperty Name="autor_uno_nombre" ColumnName="autor_uno_nombre" />
+                <ScalarProperty Name="autor_dos_nombre" ColumnName="autor_dos_nombre" />
+                <ScalarProperty Name="autor_tres_nombre" ColumnName="autor_tres_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="autores_libros_Progra6Model.autores">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="autores_libros_Progra6Model.Store.create_autor">
+                  <ScalarProperty Name="autor_tres_nombre" ParameterName="autor_tres_nombre" />
+                  <ScalarProperty Name="autor_dos_nombre" ParameterName="autor_dos_nombre" />
+                  <ScalarProperty Name="autor_uno_nombre" ParameterName="autor_uno_nombre" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="autores_libros_Progra6Model.Store.update_autores">
+                  <ScalarProperty Name="autor_tres_nombre" ParameterName="autor_tres_nombre" Version="Current" />
+                  <ScalarProperty Name="autor_dos_nombre" ParameterName="autor_dos_nombre" Version="Current" />
+                  <ScalarProperty Name="autor_uno_nombre" ParameterName="autor_uno_nombre" Version="Current" />
+                  <ScalarProperty Name="id_autores" ParameterName="id_autores" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="autores_libros_Progra6Model.Store.delete_autor">
+                  <ScalarProperty Name="id_autores" ParameterName="id_autores" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="libros">
+            <EntityTypeMapping TypeName="autores_libros_Progra6Model.libros">
+              <MappingFragment StoreEntitySet="libros">
+                <ScalarProperty Name="id_libro" ColumnName="id_libro" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+                <ScalarProperty Name="editorial" ColumnName="editorial" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
+                <ScalarProperty Name="numero_paginas" ColumnName="numero_paginas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="autores_libros_Progra6Model.libros">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="autores_libros_Progra6Model.Store.create_libro">
+                  <ScalarProperty Name="numero_paginas" ParameterName="numero_paginas" />
+                  <ScalarProperty Name="idioma" ParameterName="idioma" />
+                  <ScalarProperty Name="fecha_publicacion" ParameterName="fecha_publicacion" />
+                  <ScalarProperty Name="editorial" ParameterName="editorial" />
+                  <ScalarProperty Name="id_autores" ParameterName="id_autores" />
+                  <ScalarProperty Name="titulo" ParameterName="titulo" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="autores_libros_Progra6Model.Store.update_libro">
+                  <ScalarProperty Name="numero_paginas" ParameterName="numero_paginas" Version="Current" />
+                  <ScalarProperty Name="idioma" ParameterName="idioma" Version="Current" />
+                  <ScalarProperty Name="fecha_publicacion" ParameterName="fecha_publicacion" Version="Current" />
+                  <ScalarProperty Name="editorial" ParameterName="editorial" Version="Current" />
+                  <ScalarProperty Name="id_autores" ParameterName="id_autores" Version="Current" />
+                  <ScalarProperty Name="titulo" ParameterName="titulo" Version="Current" />
+                  <ScalarProperty Name="id_libro" ParameterName="id_libro" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="autores_libros_Progra6Model.Store.delete_libro">
+                  <ScalarProperty Name="id_libro" ParameterName="id_libro" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="create_autor" FunctionName="autores_libros_Progra6Model.Store.create_autor" />
+          <FunctionImportMapping FunctionImportName="create_libro" FunctionName="autores_libros_Progra6Model.Store.create_libro" />
+          <FunctionImportMapping FunctionImportName="delete_autor" FunctionName="autores_libros_Progra6Model.Store.delete_autor" />
+          <FunctionImportMapping FunctionImportName="delete_libro" FunctionName="autores_libros_Progra6Model.Store.delete_libro" />
+          <FunctionImportMapping FunctionImportName="select_autor" FunctionName="autores_libros_Progra6Model.Store.select_autor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_autor_Result">
+                <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+                <ScalarProperty Name="autor_uno_nombre" ColumnName="autor_uno_nombre" />
+                <ScalarProperty Name="autor_dos_nombre" ColumnName="autor_dos_nombre" />
+                <ScalarProperty Name="autor_tres_nombre" ColumnName="autor_tres_nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="select_autores" FunctionName="autores_libros_Progra6Model.Store.select_autores">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_autores_Result">
+                <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+                <ScalarProperty Name="autor_uno_nombre" ColumnName="autor_uno_nombre" />
+                <ScalarProperty Name="autor_dos_nombre" ColumnName="autor_dos_nombre" />
+                <ScalarProperty Name="autor_tres_nombre" ColumnName="autor_tres_nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="select_libro" FunctionName="autores_libros_Progra6Model.Store.select_libro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_libro_Result">
+                <ScalarProperty Name="id_libro" ColumnName="id_libro" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+                <ScalarProperty Name="editorial" ColumnName="editorial" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
+                <ScalarProperty Name="numero_paginas" ColumnName="numero_paginas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="select_libros" FunctionName="autores_libros_Progra6Model.Store.select_libros">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="autores_libros_Progra6Model.select_libros_Result">
+                <ScalarProperty Name="id_libro" ColumnName="id_libro" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_autores" ColumnName="id_autores" />
+                <ScalarProperty Name="editorial" ColumnName="editorial" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="idioma" ColumnName="idioma" />
+                <ScalarProperty Name="numero_paginas" ColumnName="numero_paginas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="update_autores" FunctionName="autores_libros_Progra6Model.Store.update_autores" />
+          <FunctionImportMapping FunctionImportName="update_libro" FunctionName="autores_libros_Progra6Model.Store.update_libro" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
